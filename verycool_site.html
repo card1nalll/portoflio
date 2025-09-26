@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+		*{margin:0}
+
+		.panel{
+			min-height: 100vh;
+		}
+
+		.a{
+			background-color: red;
+		}
+
+		.b{
+
+			background-color: blue;
+		}
+		.b h1 {
+			transform-origin: top left;
+			transform: scaleY(2);
+			font-size: 10vh;
+		}
+		#Image{ 
+			
+			outline-offset: -3px;
+			position: fixed;
+			top:0;
+			left:0;
+			width: 100vw;
+		}
+	
+	</style>
+</head>
+<body>
+		<div id="A" class="panel a">
+			a
+			<img src="illia_name.png" id="Image" alt="">
+		</div>
+		<div id="B" class="panel b">
+			<h1 id="something">illia</h1>
+		</div>
+		<script>
+			// console.log("Hi!")
+
+			window.addEventListener('scroll', function() {
+				const A = document.getElementById('A');
+				const Arect = A.getBoundingClientRect();
+				//console.log(`A top: ${Math.round(Arect.top)}px from viewport top`);
+				
+				const B = document.getElementById('B');
+				const Brect = B.getBoundingClientRect();
+				//console.log(`B top: ${Math.round(Brect.top)}px from viewport top`);
+				
+				const H = Brect.top;
+				console.log(H)
+
+
+				const I = document.getElementById("Image");
+				I.height=H;
+
+
+				const Thing = document.getElementById("something");
+				let factor = 1000/H;
+				Thing.style.transform = `scaleY(${factor})`;
+			});
+		</script>
+</body>
+</html>
